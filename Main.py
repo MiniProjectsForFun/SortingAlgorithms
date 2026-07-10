@@ -1,4 +1,4 @@
-import os
+'''import os
 import subprocess
 from py4j.java_gateway import JavaGateway, GatewayParameters, launch_gateway
 
@@ -19,4 +19,24 @@ port = launch_gateway(classpath=JAVA_OUT)
 
 gateway = JavaGateway(gateway_parameters=GatewayParameters(port=port))
 
-main = gateway.jvm.Main()
+main = gateway.jvm.Main()'''
+
+import python.GraphicsManager
+import time
+
+graphics = python.GraphicsManager.GraphicsManager()
+
+graphics.update([2, 3, 4, 5, 1])
+time.sleep(1)
+
+graphics.update([2, 3, 4, 1, 5])
+time.sleep(1)
+
+graphics.update([2, 3, 1, 4, 5])
+time.sleep(1)
+
+graphics.update([2, 1, 3, 4, 5])
+time.sleep(1)
+
+graphics.update([1, 2, 3, 4, 5])
+time.sleep(1)
