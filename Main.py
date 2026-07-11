@@ -20,3 +20,24 @@ port = launch_gateway(classpath=JAVA_OUT)
 gateway = JavaGateway(gateway_parameters=GatewayParameters(port=port))
 
 main = gateway.jvm.Main()
+
+import python.GraphicsManager
+import time
+import random
+
+size = 64
+
+arr = gateway.new_array(gateway.jvm.int, size)
+for i in range(size):
+    arr[i] = i
+
+random.shuffle(arr)
+
+main.setArray(arr)
+
+graphics = python.GraphicsManager.GraphicsManager()
+
+graphics.update(main.getArray())
+while not main.isFinish():
+    main.update()
+    graphics.update(main.getArray())

@@ -1,35 +1,49 @@
-public class Main {
+class Main{
 
+    int[] arr;
+    int done;
+    int i;
 
-    public static void main(String[] args) {
-    int[] checkArr = new int[]{1,3, 2,4,6,5,8,7,11,10,9};
-    System.out.println(java.util.Arrays.toString(bogoSort(checkArr)));
-    System.out.println(isSorted(checkArr));
-
+    public Main(int[] arr){
+        this.arr = arr;
+        this.done = 1;
+        this.i = 0;
     }
 
-    public static int[] bogoSort(int[] arr) { //uga buga!!!!!!!
-        while (!isSorted(arr)) {
-            shuffle(arr);
-        }
-        return arr;
+    public Main(){
+        this.done = 1;
+        this.i = 0;
     }
 
-
-    public static boolean isSorted(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] > arr[i + 1]) {
-                return false;
-            }
+    public void update(){
+        int temp;
+        if (this.arr[this.i] > this.arr[this.i + 1]){
+            temp = this.arr[this.i];
+            this.arr[this.i] = this.arr[this.i + 1];
+            this.arr[this.i + 1] = temp;
         }
-        return true;
+        this.i++;
+        if(i >= this.arr.length - this.done){
+            done++;
+            this.i = 0;
+        }
     }
-    public static void shuffle(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int randomIndex = (int) (Math.random() * arr.length);
-            int temp = arr[i];
-            arr[i] = arr[randomIndex];
-            arr[randomIndex] = temp;
-        }
+
+    public void setArray(int[] arr){
+        this.arr = arr;
+        this.done = 1;
+        this.i = 0;
+    }
+
+    public boolean isFinish(){
+        return this.done >= this.arr.length - 1;
+    }
+
+    public int[] getArray(){
+        return this.arr;
+    }
+
+    public int getDone(){
+        return this.done;
     }
 }
