@@ -1,49 +1,30 @@
-class Main{
+public class Main{
 
-    int[] arr;
-    int done;
-    int i;
+    private int[] arr;
+
+    private BubbleSort bubble = new BubbleSort();
 
     public Main(int[] arr){
         this.arr = arr;
-        this.done = 1;
-        this.i = 0;
+        bubble.setArray(this.arr);
     }
 
-    public Main(){
-        this.done = 1;
-        this.i = 0;
-    }
+    public Main(){}
 
     public void update(){
-        int temp;
-        if (this.arr[this.i] > this.arr[this.i + 1]){
-            temp = this.arr[this.i];
-            this.arr[this.i] = this.arr[this.i + 1];
-            this.arr[this.i + 1] = temp;
-        }
-        this.i++;
-        if(i >= this.arr.length - this.done){
-            done++;
-            this.i = 0;
-        }
+        bubble.update();
     }
 
     public void setArray(int[] arr){
         this.arr = arr;
-        this.done = 1;
-        this.i = 0;
+        bubble.setArray(this.arr);
     }
 
     public boolean isFinish(){
-        return this.done >= this.arr.length - 1;
+        return bubble.isFinish();
     }
 
     public int[] getArray(){
-        return this.arr;
-    }
-
-    public int getDone(){
-        return this.done;
+        return bubble.getArray();
     }
 }
