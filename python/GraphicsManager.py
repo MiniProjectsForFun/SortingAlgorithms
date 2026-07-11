@@ -14,6 +14,6 @@ class GraphicsManager:
         size_height = self.win_height / len(arr)
 
         for i in range(len(arr)):
-            pg.draw.rect(self.win, (255,255,255), pg.Rect(math.floor(i * size_width), round(self.win_height - arr[i] * size_height), math.ceil(size_width), round((1 + arr[i]) * size_height)))
+            pg.draw.rect(self.win, (255,255,255), pg.Rect(i * size_width, self.win_height - arr[i] * size_height, size_width, (1 + arr[i]) * size_height))
 
         pg.display.update()
