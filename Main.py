@@ -62,3 +62,9 @@ while not main.isFinish():
 print(time.time() - start_time)
 print(python_time)
 print(java_time)
+
+finish_arr = main.getArray()
+for i in range(len(finish_arr)):
+    print(i, finish_arr[i] == i, finish_arr[i])
+
+time.sleep(10)

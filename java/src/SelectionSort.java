@@ -14,18 +14,48 @@ public class SelectionSort{
 
     public void update(){
         int min = this.arr[this.done];
-        int min_index = this.arr[this.done];
+        int max = this.arr[this.done];
+        int min_index = this.done;
+        int max_index = this.done;
 
-        for (int i = this.done + 1; i < this.arr.length; i++){
+        for (int i = this.done; i < this.arr.length - this.done; i++){
             if(min > this.arr[i]){
                 min = this.arr[i];
                 min_index = i;
             }
+            if(max < this.arr[i]){
+                max = this.arr[i];
+                max_index = i;
+            }
         }
 
-        int temp = this.arr[this.done];
-        this.arr[this.done] = this.arr[min_index];
-        this.arr[min_index] = temp;
+        if (max_index == this.done && min_index == this.arr.length - (1 + this.done)){
+
+            int temp = this.arr[max_index];
+            this.arr[max_index] = this.arr[min_index];
+            this.arr[min_index] = temp;
+
+        } else if (max_index == this.done){
+
+            int temp1 = this.arr[this.arr.length - (1 + this.done)];
+            this.arr[this.arr.length - (1 + this.done)] = this.arr[max_index];
+            this.arr[max_index] = temp1;
+
+            int temp2 = this.arr[max_index];
+            this.arr[max_index] = this.arr[min_index];
+            this.arr[min_index] = temp2;
+
+        } else{
+
+            int temp2 = this.arr[this.done];
+            this.arr[this.done] = this.arr[min_index];
+            this.arr[min_index] = temp2;
+
+            int temp1 = this.arr[this.arr.length - (1 + this.done)];
+            this.arr[this.arr.length - (1 + this.done)] = this.arr[max_index];
+            this.arr[max_index] = temp1;
+
+        }
 
         this.done++;
     }
@@ -36,7 +66,7 @@ public class SelectionSort{
     }
 
     public boolean isFinish(){
-        return this.done > this.arr.length - 1;
+        return (this.arr.length / 2) <= this.done;
     }
 
     public int[] getArray(){
